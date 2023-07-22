@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New OJ</h1>
+
+<h2>Hey {{ username }}</h2>
+
+
+<form method="GET" action="{% url 'home' %}">
+    <select name="problem" id="problem">
+        <option value="">Select problem</option>
+        {% for problem in problems %}
+            <option value="{{ problem.id }}">{{ problem.problemname }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+</form>
+
+    
+</body>
+</html>
+

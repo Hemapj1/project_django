@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Judge - Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .description-box {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 20px;
+            height: calc(100vh - 50px);
+            box-sizing: border-box;
+        }
+
+        .language-box,
+        .code-editor-box,
+        .io-box,
+        .action-box {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .io-box {
+            display: flex;
+        }
+
+        .io-item {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .run-btn,
+        .submit-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>OJ - Online Judge</h1>
+    </header>
+    <div class="container">
+        <div class="description-box">
+            <h2>{{ProblemName}}</h2>
+            <p>
+                {{Problemstatement}}
+            </p>
+        </div>
+
+        <form action="{% url 'verdict' problem_id=problem_id %}" method="post">
+            {% csrf_token %}
+           
+            <div class="language-box">
+                <h2>Select Language</h2>
+                <select name="language">
+                    <option name="c" value="c">c</option>
+                    <option name="cpp" value="cpp">cpp</option>
+                    <option name="java" value="java">java</option>
+                </select>
+            </div>
+            <div class="code-editor-box">
+                <h2>Code Editor</h2>
+                <textarea name='code' rows="10" cols="50"></textarea>
+            </div>
+            <div class="io-box">
+                <div class="io-item">
+                    <h2>Input</h2>
+                    <textarea name='input' rows="5" cols="30"></textarea>
+                </div>
+                <div class="io-item">
+                    <h2>Output</h2>
+
+                    <textarea rows="5" cols="30" readonly></textarea>
+                </div>
+                <div class="io-item">
+                    <h2>Verdict</h2>
+
+                    <p>Verdict goes here</p>
+                </div>
+            </div>
+            <div class="action-box">
+
+                <button class="run-btn">Run</button>
+                <button class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
